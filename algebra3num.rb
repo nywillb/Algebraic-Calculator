@@ -17,8 +17,6 @@ def pick(var)
     operation = "*"
   elsif var.downcase == "division" || var == "÷" || var.downcase == "/" || var.downcase == "divided"
     operation = "/"
-  elsif var.downcase == "exponent" || var == "^"
-    operation = "^"
   else
     puts "You did not put a valid operation :( The program is now restarting."
     operation = "invalid"
@@ -47,9 +45,6 @@ if operation != "invalid"
   elsif operation == "/"
     puts "#{equVar.green} = #{numberOne / numberTwo / numberThree}"
     total = numberOne / numberTwo
-  elsif operation == "^"
-    puts "#{equVar.green} = #{numberOne^numberTwo^numberThree}"
-  end
 end
 
 again = gets.chomp

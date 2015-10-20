@@ -1,10 +1,16 @@
-require 'colorize'
-
+begin
+  gem "colorize"
+rescue Gem::LoadError
+  puts "Calculator Error 001: Unable to Load Gem"
+  puts "The \"Colorize\" Gem was unable to be loaded. The program will not run correctly."
+end
+should_i_keep_asking? = true
 puts "Welcome to our calculator".light_blue.blink
 
 
 puts "What is your #{"variable".green}?"
 equVar = gets.chomp
+
 
 puts "What #{"operation".blue} is in your equation?"
 user_input_operation = gets.chomp
@@ -18,12 +24,17 @@ def pick(var)
   elsif var.downcase == "division" || var == "÷" || var.downcase == "/" || var.downcase == "divided"
     operation = "/"
   else
-    puts "You did not put a valid operation :( The program is now restarting."
+    puts "Hey! You broke the rules. #{user_input_operation} is not a valid operation. You can choose from addition, subtraction, multiplication, or division."
     operation = "invalid"
   end
   return operation
 end
+
 puts pick(user_input_operation)
+while(operation == "invalid")
+  puts ""
+  puts pick(user_input_operation)
+end
 
 operation = pick(user_input_operation)
 if operation != "invalid"
